@@ -11,11 +11,13 @@ class SerializationInterface(ABC):
 
 class JsonData(SerializationInterface):
     def save(self, data):
-        with open('file_name', 'w') as fh:
+        with open('file_name.json', 'w') as fh:
             json.dump(data, fh)
+        print(f'{fh} has been saved')
 
 
 class BinData(SerializationInterface):
     def save(self, data):
-        with open('file_name', 'wb') as fh:
+        with open('file_name.bin', 'wb') as fh:
             pickle.dump(data, fh)
+        print(f'{fh} has been saved')
