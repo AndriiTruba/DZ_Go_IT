@@ -39,10 +39,15 @@ def show_emails_by_name():
 def show_all_contact():
     record = Record()
     contacts = record.get_all_contact()
+    print('|{:^3}|{:^10}|{:^30}|{:^35}|'.format(' № ', 'Name', 'Phones', 'Emails'))
+    num = 0
     for con in contacts:
-        print(f"Contact: {con.name} phones:  {', '.join([phone.phone for phone in record.get_phones(con)])} \
-emails: {', '.join([email.email for email in record.get_emails(con)])}")
-    return f"<<< That's all >>>"
+        phone_con = ', '.join([phone.phone for phone in record.get_phones(con)])
+        email_con = ', '.join([email.email for email in record.get_emails(con)])
+        print('|{:^3}|{:<10}|{:<30}|{:<35}|'.format(num+1, con.name, phone_con, email_con))
+        # print(f"Contact: {con.name} phones:  {', '.join([phone.phone for phone in record.get_phones(con)])} \
+# emails: {', '.join([email.email for email in record.get_emails(con)])}")
+    return f"\n<<< That's all >>>"
 
 
 def exit_handler():
