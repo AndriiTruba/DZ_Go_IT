@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "module-09-dz"
+version = "0.1.0"
+description = ""
+authors = ["Andrii Truba <truba.a@icloud.com>"]
+readme = "README.md"
+packages = [{include = "module_09_dz"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+sqlalchemy = "^1.4.45"
+alembic = "^1.8.1"
+psycopg2-binary = "^2.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
