@@ -59,8 +59,8 @@ def add_phone():
         if name_cont == "0":
             return '\n>>> You enter the main menu add<<<'
         try:
-            name_cont = Name(name_cont)
-            record = Record(name=name_cont)
+            name = Name(name_cont)
+            record = Record(name=name)
             if name_cont == record.get_contact_by_name().name:
                 break
         except AttributeError:
@@ -77,9 +77,9 @@ def add_phone():
             break
         print("<<< Phone must contains 10 symbols and only numbers>>>\n        <<<Write correct phone>>>")
     phone_cont = CellPhone(phone_cont)
-    record = Record(name=name_cont, phones=phone_cont)
+    record = Record(name=name, phones=phone_cont)
     record.save_phone()
-    return f">>>was added name: {name_cont.value}, phone: {phone_cont.value} <<<"
+    return f">>>was added name: {name.value}, phone: {phone_cont.value} <<<"
 
 
 def add_email():

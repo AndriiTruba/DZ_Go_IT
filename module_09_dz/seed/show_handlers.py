@@ -13,7 +13,7 @@ def show_phones_by_name():
             if name_cont == record.get_contact_by_name().name:
                 break
         except AttributeError:
-            print(f"\n>>> You dont have a contact {name_cont}! <<<\n     >>>Choose another name <<<")
+            print(f"\n>>> You dont have a contact {name_cont.value}! <<<\n     >>>Choose another name <<<")
     contact = record.get_contact_by_name()
     phones = record.get_phones(contact)
     return f"Contact: {contact.name} phones: {', '.join([phone.phone for phone in phones])}"
@@ -30,7 +30,7 @@ def show_emails_by_name():
             if name_cont == record.get_contact_by_name().name:
                 break
         except AttributeError:
-            print(f"\n>>> You dont have a contact {name_cont}! <<<\n     >>>Choose another name <<<")
+            print(f"\n>>> You dont have a contact {name_cont.value}! <<<\n     >>>Choose another name <<<")
     contact = record.get_contact_by_name()
     emails = record.get_emails(contact)
     return f"Contact: {contact.name} emails: {', '.join([email.email for email in emails])}"
@@ -40,11 +40,10 @@ def show_all_contact():
     record = Record()
     contacts = record.get_all_contact()
     print('|{:^3}|{:^10}|{:^30}|{:^35}|'.format(' № ', 'Name', 'Phones', 'Emails'))
-    num = 0
-    for con in contacts:
-        phone_con = ', '.join([phone.phone for phone in record.get_phones(con)])
-        email_con = ', '.join([email.email for email in record.get_emails(con)])
-        print('|{:^3}|{:<10}|{:<30}|{:<35}|'.format(num+1, con.name, phone_con, email_con))
+    for count, contact in enumerate(contacts, start=1):
+        phone_con = ', '.join([phone.phone for phone in record.get_phones(contact)])
+        email_con = ', '.join([email.email for email in record.get_emails(contact)])
+        print('|{:^3}|{:<10}|{:<30}|{:<35}|'.format(count, contact.name, phone_con, email_con))
         # print(f"Contact: {con.name} phones:  {', '.join([phone.phone for phone in record.get_phones(con)])} \
 # emails: {', '.join([email.email for email in record.get_emails(con)])}")
     return f"\n<<< That's all >>>"
