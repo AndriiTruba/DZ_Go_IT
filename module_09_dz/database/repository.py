@@ -72,6 +72,7 @@ class Record:
 
     def get_contact_by_name(self):
         contact = session.query(Contact).filter(Contact.name == self.name.value).first()
+        session.close()
         return contact
 
     def get_all_phones(self):
